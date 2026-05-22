@@ -2,6 +2,7 @@ RPi.GPIO == 0.7.1
 adafruit-circuitpython-dht == 4.0.4
 adafruit-circuitpython-ds18x20 == 1.4.0
 adafruit-circuitpython-onewire == 2.0.7
+adafruit-circuitpython-sht31d == 2.3.31
 pyserial == 3.5
 py-sds011 == 0.9
 pynmea2 == 1.19.0

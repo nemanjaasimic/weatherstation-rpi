@@ -1,4 +1,4 @@
-from sensor.temp_humidity import get_temp_and_humidity_readings
+from sensor.sht31_temp import get_temp_and_humidity_readings
 from sensor.globe_temp import find_ds18b20, read_globe_temperature
 from sensor.air_quality import read_air_quality_sensor
 from sensor.gps import get_gps_data

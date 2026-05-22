@@ -15,14 +15,27 @@ mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 # CS   = 16
 # mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
- 
-def get_wind_speed():
-    adc_0 = mcp.read_adc(0)
-    # wind_speed = measured_value / MAX_MEASURED_VALUE * MAX_WIND_SPEED_MEASURED
-    wind_speed = adc_0 / 1023 * 60
-    wind_speed = round(wind_speed, 3)
+R_TOP = 1000.0       # sensor output -> ADC input
+R_BOTTOM = 2000.0    # ADC input -> GND
 
-    return wind_speed
+MCP_VREF = 3.3
+MAX_SENSOR_V = 5.0
+MAX_WIND_MPS = 60.0  
+
+def get_wind_speed():
+    adc = mcp.read_adc(0)
+
+    v_adc = (adc / 1023.0) * 3.3
+
+    divider_ratio = R_BOTTOM / (R_TOP + R_BOTTOM)
+    v_sensor = v_adc / divider_ratio
+
+    # Clamp voltage
+    v_sensor = max(0.0, min(5.0, v_sensor))
+
+    wind_speed = (v_sensor / 5.0) * 60.0
+
+    return round(wind_speed, 3)
 
  
 def get_uv_intensity():

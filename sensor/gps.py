@@ -5,7 +5,7 @@ import pytz
 from lat_lon_parser import to_str_deg_min_sec
 
 def get_gps_data():
-	port="/dev/ttyS0"
+	port="/dev/ttyAMA0"
 	neo_6m_gps_serial=serial.Serial(port, baudrate=9600, timeout=1)
 	# dataout = pynmea2.NMEAStreamReader()
 	time.sleep(2)
