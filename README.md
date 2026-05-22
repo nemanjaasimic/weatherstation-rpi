@@ -1,2 +1,4 @@
-# weatherstation-rpi
-RPi Code for Weatherstation project
+# SMaRT-mobile-BioMeteoS
+
+
+Codebase for SMaRT-mobile-BioMeteoS weather station project. 
